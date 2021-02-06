@@ -11,14 +11,17 @@ class Alarm:
         self.time = f'{self.h}:{self.m}:{self.s}'
     
     def sound(self):
-        frequency= 2500
-        duration = 10000
-        return winsound.Beep(frequency, duration)
+        frequency= 100
+        duration = 1000
+        for i in range(6):
+            winsound.Beep(frequency, duration)
+            frequency+=100
+            duration+=40
     
     def check(self):
         while True:
             t=0
-            recent_time = dt.datetime.now().strftime('%H:%M:%S')
+            recent_time = dt.datetime.now().strftime('%#H:%#M:%#S')
             if self.time == recent_time: 
                 return self.sound() 
                 break
